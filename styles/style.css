@@ -70,9 +70,31 @@ a:hover{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    background-color: rgba(70, 69, 69,0.98);
+    background-color: rgba(70, 69, 69, 0.98);
     width: 80%;
     min-height: 100%;
+}
+
+#statsBody{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    color: black;
+    width: 90%;
+    height: 60vh;
+    display: none;
+}
+
+#profile{
+    width: 15%;
+    background-color: lightgrey;
+    font-size: 12px;
+    height: fit-content;
+}
+
+#wrongName{
+    display: none;
 }
 
 #UIDInput{
