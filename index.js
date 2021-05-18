@@ -16,6 +16,7 @@ async function fetchData(summonerName, key, url) {
         let body = await response.json();
         console.log(body);
         return body;
+
     } catch (err) {
         console.log(err);
     }

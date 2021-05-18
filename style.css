@@ -1,0 +1,119 @@
+html{
+    font-size: 12px;
+    font-family: 'Noto Sans TC', sans-serif;
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-image: url('../images/league-rise-background.png');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%
+    
+  }
+html, body{
+    margin: 0, 0;
+    padding: 0, 0;
+}
+
+h1{
+    margin: 0;
+    padding: 20px 0px;
+    text-shadow:3px 3px rgb(110, 90, 50);;
+    font-size: 60px;
+    text-align: center;
+    color: rgb(182,152,94);
+}
+
+h2{
+    margin-top: 10%;
+    margin-bottom: 50px;
+    padding: 10px 10px;
+    font-size: 2vw;
+    color:white;
+}
+
+h3{
+    padding: 10px 10px;
+    font-size: 15px;
+    color:white;
+}
+img{
+    display: block;
+    margin: 0 auto;
+}
+
+p, li{
+    color: white;
+    font-size: 16px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+a{
+    font-size: 20px;
+    line-height: 5;
+    color: rgb(182,152,94);
+}
+
+a:hover{
+    color:rgb(232,193,124);
+}
+
+.header{
+    margin: 0, 0;
+    background-color: rgb(32, 32, 32);
+}
+
+.center{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: rgba(70, 69, 69, 0.98);
+    width: 80%;
+    min-height: 100%;
+}
+
+#statsBody{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    color: black;
+    width: 90%;
+    height: 60vh;
+    display: none;
+}
+
+#profile{
+    width: 15%;
+    background-color: lightgrey;
+    font-size: 12px;
+    height: fit-content;
+}
+
+#wrongName{
+    display: none;
+}
+
+#UIDInput{
+    width: 12vw;
+    height: 2.75vh;
+    font-size: 1vw;
+    border:3px solid rgb(110, 90, 50);
+}
+
+#UIDButton{
+    width: 7vw;
+    height: 3vh;
+    background-color: rgb(43, 90, 190);
+    color: white;
+    opacity:100%;
+    border: 0px solid black;
+}
+
+#UIDButton:hover{
+    background-color: rgb(37, 78, 167);
+}
+
