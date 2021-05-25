@@ -19,8 +19,8 @@ html, body{
 h1{
     margin: 0;
     padding: 20px 0px;
-    text-shadow:3px 3px rgb(110, 90, 50);;
-    font-size: 60px;
+    text-shadow:1px 1px rgb(110, 90, 50);;
+    font-size: 3.2vh;
     text-align: center;
     color: rgb(182,152,94);
 }
@@ -87,10 +87,35 @@ a:hover{
 }
 
 #profile{
-    width: 15%;
+    width: fit-content;
     background-color: lightgrey;
     font-size: 12px;
     height: fit-content;
+    border: 2px solid black;
+}
+
+#profileName{
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 3px;
+    color: black;
+    line-height: 0.8;
+}
+#profileLevel{
+    color: black;
+    font-size: 14px;
+    line-height: 0.8;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#profilePic{
+    padding-top: 10px;
+    margin-bottom: 3px;
+    align-self: center;
+    width: 75px;
+    height: 75px;
 }
 
 #wrongName{
@@ -102,6 +127,7 @@ a:hover{
     height: 2.75vh;
     font-size: 1vw;
     border:3px solid rgb(110, 90, 50);
+    margin-bottom: 5px;
 }
 
 #UIDButton{

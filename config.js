@@ -3,5 +3,6 @@ dotenv.config();
 module.exports = {
     port: process.env.PORT,
     apiKey: process.env.API_KEY,
-    apiGetByName: process.env.API_URL_BYNAME
+    apiBasicInfoByName: process.env.API_URL_BYNAME,
+    apiRankedInfoById: process.env.API_URL_RANKED_BYID
 };

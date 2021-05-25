@@ -3,9 +3,10 @@ const app = express();
 const port = 3000;
 const fetch = require('node-fetch');
 const cors = require('cors');
+let userId;
 
-async function fetchData(summonerName, key, url) {
-    let fullUrl = url + summonerName + '?api_key=' + key;
+async function fetchData(summonerSpec, key, url) {
+    let fullUrl = url + summonerSpec + '?api_key=' + key;
     console.log(key)
 
     try {
@@ -30,13 +31,20 @@ app.get('/testplatform', (req, res) => {
 
 })
 
+app.get('/summonerRankedStats/by-id/:id', async (req, res) =>{
+    const { apiKey, apiRankedInfoById } = require(`./config`);
+    var id = req.params.id;
+    const data = await fetchData(id, `${apiKey}`, `${apiRankedInfoById}`)
+    res.send(data);
+})
+
 app.get('/summonerInfo/by-name/:name', async (req, res) => {
-    const { apiKey, apiGetByName } = require(`./config`);
+    const { apiKey, apiBasicInfoByName } = require(`./config`);
     var name = req.params.name;
-    const data = await fetchData(name, `${apiKey}`, `${apiGetByName}`)
-    res.send(data)
+    const data = await fetchData(name, `${apiKey}`, `${apiBasicInfoByName}`)
+    res.send(data);
 })
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`League Stat Tracker BackEnd listening at http://localhost:${port}`)
 })
