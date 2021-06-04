@@ -26,15 +26,6 @@ npm install cors
 (once again to fetch data from API)
 ~~~
 
-Assuming that all went well, you'll need to download some League of Legends assets that I would have included in the repository if it wasn't too large.
-
-Download from [here](https://ddragon.leagueoflegends.com/cdn/dragontail-9.3.1.tgz)
-
-unzip it, and place it in the league-stat-tracker-main folder. 
-
-Also you will need to rename it to `dragontail-stats`. Currently, you will also need to put the ranked-emblems folder into the dragontail-stats folder. Hopefully these
-last two steps are gone by the time you see this. But maybe not. Who knows.
-
 Okay one more thing before you can run this code, the .env file. My .env file is hidden for safety reasons, but if you need to make your own, just create a .env file and copy paste what's below directly into the file.
 
 ~~~
