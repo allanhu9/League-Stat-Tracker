@@ -19,7 +19,7 @@ With your console looking at the league-stat-tracker-main folder, type the comma
 npm install express
 (to install express)
 npm install node-fetch
-(to fetch data from API)
+(so we can fetch data from API)
 npm install dot-env
 (for the environment file... More on that later)
 npm install cors
@@ -35,7 +35,7 @@ unzip it, and place it in the league-stat-tracker-main folder.
 Also you will need to rename it to `dragontail-stats`. Currently, you will also need to put the ranked-emblems folder into the dragontail-stats folder. Hopefully these
 last two steps are gone by the time you see this. But maybe not. Who knows.
 
-Okay one more thing before you can run this code, the .env file. My .env file is hidden for safety reasons, but if you need to make your own, just create a .env file and copy paste what's below.
+Okay one more thing before you can run this code, the .env file. My .env file is hidden for safety reasons, but if you need to make your own, just create a .env file and copy paste what's below directly into the file.
 
 ~~~
 NODE_ENV=development
