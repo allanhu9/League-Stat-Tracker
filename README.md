@@ -3,8 +3,8 @@ A stat tracking website for league of legends
 
 For now: The website is able to grab data from the RIOT API and display it on the website. Requires a .env file with a riot api key, port, and GET url. Also, these files need to be in an express.js project with a few extra add-ons like cors and dotenv installed.
 
-
-## To run the website:
+Assuming I don't have my page up and running online anywhere:
+## To run the website locally:
 
 This project uses something called express.js, a node.js framework, to host a local server so that it can fetch data from the RIOT api.
 Since this is obviously not optimized, there's a few things you'll need to do to be able to run it.
@@ -35,4 +35,22 @@ unzip it, and place it in the league-stat-tracker-main folder.
 Also you will need to rename it to `dragontail-stats`. Currently, you will also need to put the ranked-emblems folder into the dragontail-stats folder. Hopefully these
 last two steps are gone by the time you see this. But maybe not. Who knows.
 
-Okay one more thing before you can run this code, the .env file. My .env file is hidden,
+Okay one more thing before you can run this code, the .env file. My .env file is hidden for safety reasons, but if you need to make your own, just create a .env file and copy paste what's below.
+
+~~~
+NODE_ENV=development
+PORT=
+API_KEY=
+API_URL_BYNAME=https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/
+API_URL_RANKED_BYID=https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/
+API_URL_MATCHES_BYPUUID=https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/
+API_URL_MATCHDATA_BYMATCHID=https://americas.api.riotgames.com/lol/match/v5/matches/
+~~~
+
+You can set your own port to be whatever you want. As for the api-key, you can either get your own by going onto RIOT API, or if you know me personally, just email me. Hopefully my website will be approved to have a key by then.
+
+Now, all you have to do to run it is to type
+~~~
+node index.js
+~~~
+into the command line (that is still on the league-stat-tracker-main folder and then run the index.html file. Yay.
