@@ -18,20 +18,38 @@
     <div class="center">
         <p>Enter a username:</p>
 
-            <input id="UIDInput" type='text'>
-            <br>
-            <button id="UIDButton">Search</button>
-            <div id="wrongName">
-                This is not a valid username.
-            </div>
-            <div id="statsBody">
+        <input id="UIDInput" type='text'>
+        <br>
+        <button id="UIDButton">Search</button>
+        <div id="wrongName">
+            This is not a valid username.
+        </div>
+        <div id="waitScreen">
+            Please wait, this website is not optimized. xd.
+        </div>
+        <div id="statsBody">
+
+            <div id="upperStats">
                 <div id="profile">
-                        <img id = "profilePic">
-                        <p id="profileLevel"></p>
-                        <p id="profileName"></p>
+                    <img id="profilePic">
+                    <p id="profileLevel"></p>
+                    <p id="profileName"></p>
+                </div>
+
+                <div id="rankedStats">
+                    <p id="rank"></p>
+                    <img id="rankLogo">
+                    <p id="winRate"></p>
+                    <p id="winsLosses"></p>
+                </div>
+
+                <div id="historyContainer">
+
                 </div>
 
             </div>
+
+        </div>
     </div>
 
     <script src="scripts/main.js"></script>
