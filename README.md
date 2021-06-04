@@ -53,4 +53,4 @@ Now, all you have to do to run it is to type
 ~~~
 node index.js
 ~~~
-into the command line (that is still on the league-stat-tracker-main folder and then run the index.html file. Yay.
+into the command line (that is still on the league-stat-tracker-main folder) and then run the index.html file. Yay.
