@@ -1,5 +1,0 @@
-This project uses something called express.js, a node.js framework, to host a local server so that it can fetch data from the RIOT api.
-Since this is obviously not optimized, there's a few things you'll need to do to be able to run it.
-First, you'll need to download node.js, which you can just do by googling it.
-Once you've done that, you can go ahead and download this repository and put it in a folder anywhere, the name is up to you.
-Then, with the console and looking at that folder, you can make
