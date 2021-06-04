@@ -30,4 +30,9 @@ Assuming that all went well, you'll need to download some League of Legends asse
 
 Download from [here](https://ddragon.leagueoflegends.com/cdn/dragontail-9.3.1.tgz)
 
-and unzip it
+unzip it, and place it in the league-stat-tracker-main folder. 
+
+Also you will need to rename it to `dragontail-stats`. Currently, you will also need to put the ranked-emblems folder into the dragontail-stats folder. Hopefully these
+last two steps are gone by the time you see this. But maybe not. Who knows.
+
+Okay one more thing before you can run this code, the .env file. My .env file is hidden,
