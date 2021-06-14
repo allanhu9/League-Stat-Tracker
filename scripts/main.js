@@ -29,7 +29,7 @@ async function fetchData(summonerSpec, preURL) {
     });
     */
     //grab data from express server:
-    let url = preURL + summonerSpec;
+    let url = "https://obscure-bayou-75383.herokuapp.com/" + preURL + summonerSpec;
     //console.log(url);
     try {
         let response = await fetch(url, {
@@ -109,7 +109,7 @@ async function fillMatchHistory(matchHistory, _callback) {
         match.className = 'match';
         await sleep(1);
         let matchId = matchHistory[i];//grab data
-        let response = fetchData(matchId, 'http://localhost:3000/matchInfo/by-matchid/');
+        let response = fetchData(matchId, 'matchInfo/by-matchid/');
         let matchInfo = await (await response).json();
         //console.log(matchInfo);
         try {
@@ -316,14 +316,14 @@ async function fillDisplayBody(summonerInfo, _callback) {
     //GET ranked stats and display
     {
         summonerId = summonerInfo.id;
-        let response = fetchData(summonerId, 'http://localhost:3000/summonerRankedStats/by-id/');//fetch ranked stats
+        let response = fetchData(summonerId, 'summonerRankedStats/by-id/');//fetch ranked stats
         let rankedInfo = await (await response).json();
         fillRankedStats(rankedInfo);
     }
     //GET mastery info and display
     {
         summonerId = summonerInfo.id;
-        let response = fetchData(summonerId, 'http://localhost:3000/mastery/by-id/');//fetch mastery of champions
+        let response = fetchData(summonerId, 'mastery/by-id/');//fetch mastery of champions
         let masteryList = await (await response).json();
         //console.log(masteryList)
         fillMastery(masteryList);
@@ -332,7 +332,7 @@ async function fillDisplayBody(summonerInfo, _callback) {
     //GET match history and display
     {
         puuid = summonerInfo.puuid;
-        let response = fetchData(puuid, 'http://localhost:3000/summonerMatchHistory/by-puuid/');//fetch previous five games
+        let response = fetchData(puuid, 'summonerMatchHistory/by-puuid/');//fetch previous five games
         let matchHistory = await (await response).json();
         console.log(matchHistory);
         fillMatchHistory(matchHistory, function () {
@@ -350,7 +350,7 @@ userNameButton.onclick = async function () {//when the search button is clicked
     waitScreen.style.display = 'none';
     wrongName.style.display = 'none';
     let summonerName = userInputBox.value;
-    let response = fetchData(summonerName, 'http://localhost:3000/summonerInfo/by-name/');
+    let response = fetchData(summonerName, 'summonerInfo/by-name/');
     let summonerInfo = await (await response).json();
     console.log(summonerInfo);
 
