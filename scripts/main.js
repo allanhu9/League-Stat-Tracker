@@ -51,7 +51,7 @@ async function fillProfile(summonerInfo) {
 
     profileLevel.textContent = summonerInfo.summonerLevel;
     profileName.textContent = summonerInfo.name;
-    profilePic.src = 'http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
+    profilePic.src = 'https://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
     //profilePic.src = './dragontail-stats/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
 }
 
