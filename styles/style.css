@@ -1,25 +1,21 @@
 html{
     font-size: 12px;
-    font-family: 'Noto Sans TC', sans-serif;
     height: 100%;
     width: 100%;
 }
 body {
+    font-family: 'Poppins', sans-serif;
     background-image: url('../images/league-rise-background.png');
     background-size: cover;
     background-attachment: fixed;
-    height: 100%
-    
+    height: 100%;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
   }
-html, body{
-    margin: 0, 0;
-    padding: 0, 0;
-}
 
 h1{
     margin: 0;
     padding: 20px 0px;
-    text-shadow:1px 1px rgb(110, 90, 50);;
     font-size: 3.2vh;
     text-align: center;
     color: rgb(182,152,94);
@@ -43,7 +39,7 @@ img{
     margin: 0 auto;
 }
 
-p, li{
+p{
     color: white;
     font-size: 16px;
     line-height: 2;
@@ -61,7 +57,6 @@ a:hover{
 }
 
 .header{
-    margin: 0, 0;
     background-color: rgb(32, 32, 32);
 }
 
@@ -78,7 +73,6 @@ a:hover{
 .match{
     width: 100%;
     display: flex;
-    align-self: left;
     height: 10vh;
     background-color:lightblue;
     border-bottom: 1px solid black;
@@ -87,6 +81,7 @@ a:hover{
 .match_champ{
     align-self: left;
     height: 100%;
+    font-size: 10px;
     flex: 0.1;
     text-align: center;
     padding-left: 4px;
@@ -103,15 +98,14 @@ a:hover{
     flex: 0.2;
     height: 100%;
     color: black;
-    font-size: 14px;
+    font-size: 2.5vh;
     text-align: center;
     line-height: 10vh;
 }
 
 .win_status{
-    align-self: top;
     line-height: 0.8;
-    font-size: 16px;
+    font-size: 2.3vh;
     margin-left: 3px;
     text-align: left;
     padding-right: 0px;
@@ -120,7 +114,8 @@ a:hover{
 
 .game_type{
     text-align: left;
-    font-size: 12px;
+    font-size: 2vh;
+    line-height: 0.9;
     color: black;
     padding-right: 0px;
     margin-right: 3px;
@@ -130,6 +125,61 @@ a:hover{
     padding: 0px, 0px, 0px, 0px;
     margin: 0px, 0px, 0px, 0px;
     flex: 0.2;
+}
+
+.champ_mastery{
+    width: 100%;
+    height: 10.6vh;
+    border-bottom: grey solid 1px;
+    display: flex;
+}
+
+.mastery_champ_container{
+    flex: 0.3;
+    padding: 2px 2px 2px 2px;
+    margin: 2px 2px 2px 2px;
+    align-self: left;
+}
+
+.mastery_champ_img{
+    width: 6vh;
+    height: 6vh;
+    align-self: center;
+}
+
+.points_container{
+flex: 0.5;
+}
+
+.points_display{
+    color:black;
+    font-size: 2vh;
+    align-self: center;
+}
+
+.mastery_champ_name{
+    color: black;
+    line-height: 0.9;
+    font-size: 1.6vh;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    align-self: center;
+}
+.mastery_container{
+    flex:0.2;
+    height:100%;
+}
+
+.mastery_level{
+    color: black;
+    font-size: 1.5vh;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+.mastery_emblem{
+    height:6vh;
+    width:7vh;
 }
 
 #waitScreen{
@@ -155,11 +205,18 @@ a:hover{
     height: 28%;
 }
 
-#profile{
-    flex: 0.1;
-    width: fit-content;
-    font-size: 12px;
+#masteryDisplay{
+    width: 27%;
     height: fit-content;
+    border: 2px solid black;
+    background-color: lightgrey;
+
+}
+
+#profile{
+    flex: 0.25;
+    font-size: 12px;
+    height: 100%;
     border: 2px solid black;
     background-color: lightgrey;
     padding-left: 10px;
@@ -167,15 +224,19 @@ a:hover{
 }
 
 #profileName{
-    padding-top: 0px;
-    margin-top: 0px;
-    margin-bottom: 3px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: 2.1vh;
     color: black;
-    line-height: 0.8;
+    line-height: 5vh;
 }
 #profileLevel{
     color: black;
-    font-size: 14px;
+    font-size: 2vh;
     line-height: 0.8;
     padding-bottom: 0px;
     margin-bottom: 0px;
@@ -191,7 +252,7 @@ a:hover{
 }
 
 #rankedStats{
-    flex: 0.2;
+    flex: 0.25;
     color: black;
     width: fit-content;
     height: fit-content;
@@ -235,7 +296,7 @@ a:hover{
 #historyContainer{
     border: 2px solid black;
     background-color: lightgrey;
-    flex:0.7;
+    flex:0.5;
     height: fit-content;
 
 }
@@ -247,17 +308,18 @@ a:hover{
 }
 
 #UIDInput{
-    width: 12vw;
+    width: 15vw;
     height: 2.75vh;
-    font-size: 1vw;
+    font-size: 1.5vw;
     border:3px solid rgb(110, 90, 50);
     margin-bottom: 5px;
 }
 
 #UIDButton{
-    width: 7vw;
+    width: auto;
     height: 3vh;
     background-color: rgb(43, 90, 190);
+    border-radius: 1vh;
     color: white;
     opacity:100%;
     border: 0px solid black;

@@ -30,14 +30,14 @@ async function fetchData(summonerSpec, preURL) {
     */
     //grab data from express server:
     let url = preURL + summonerSpec;
-    console.log(url);
+    //console.log(url);
     try {
         let response = await fetch(url, {
             method: 'GET',
         });
         //let status = await response.status;
         //let body = await response.json();//no need to parse to json, it already is
-        console.log(response);
+        //console.log(response);
         return response;
     } catch (err) {
         console.log(err);
@@ -51,7 +51,8 @@ async function fillProfile(summonerInfo) {
 
     profileLevel.textContent = summonerInfo.summonerLevel;
     profileName.textContent = summonerInfo.name;
-    profilePic.src = './dragontail-stats/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
+    profilePic.src = 'http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
+    //profilePic.src = './dragontail-stats/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
 }
 
 async function fillRankedStats(rankedInfo) {
@@ -63,52 +64,70 @@ async function fillRankedStats(rankedInfo) {
     try {//if an error occurs the person probably doesn't have any rank
         console.log(rankedInfo);//preform some calcs and show the data
         let rankTier = rankedInfo[0].tier + " " + rankedInfo[0].rank;
-        let rankSrc = rankedInfo[0].tier.toLowerCase();
-        let rankSrc1 = rankSrc.slice(0, 1);
         let WR = rankedInfo[0].wins / (rankedInfo[0].wins + rankedInfo[0].losses) * 100;//calculate winrate
 
+        /*
+        let rankSrc1 = rankSrc.slice(0, 1);
+        let rankSrc = rankedInfo[0].tier.toLowerCase();
         rankSrc1 = rankSrc1.toUpperCase();//src for ranked emblem
         rankSrc2 = rankSrc.slice(1, rankSrc.length);
         rankSrc = rankSrc1 + rankSrc2;
         console.log(rankSrc);
-
-        winRate.textContent = Math.trunc(WR) + "%";//put info onto the page
+        */
+        //put info onto the page
+        winRate.textContent = Math.trunc(WR) + "% " + rankedInfo[0].leaguePoints + "LP";
+        rankedEmblem.src = 'https://fl0rixn.de/cdn/libs/lol/ranks/' + rankedInfo[0].tier + '.png';
         rankedEmblem.style.display = 'block';
-        rankedEmblem.src = './dragontail-stats/ranked-emblems/Emblem_' + rankSrc + '.png';
+        //rankedEmblem.src = './dragontail-stats/ranked-emblems/Emblem_' + rankSrc + '.png';
+        //https://fl0rixn.de/cdn/libs/lol/ranks/Position_Challenger-Bot.png <- position links
         rank.textContent = rankTier;
         winsLosses.textContent = rankedInfo[0].wins + "W " + rankedInfo[0].losses + "L";
+
+        winsLosses.style.display = 'block';
+        winRate.style.display = 'block';
+
     } catch (err) {
         rank.textContent = "Not Ranked"
+        rankedEmblem.src = 'https://fl0rixn.de/cdn/libs/lol/ranks/unranked.png';
+        rankedEmblem.style.width = '12vh';
         winsLosses.style.display = 'none';
         winRate.style.display = 'none';
-        rankedEmblem.style.display = 'none';
     }
 }
 
 async function fillMatchHistory(matchHistory, _callback) {
+    //console.log(matchHistory);
 
-    try {
-        console.log(matchHistory);
-        let container = document.getElementById('historyContainer');
-        container.style.display = 'none';
-        removeElementsByClass('match');
-        for (let i = 0; i < matchHistory.length; i++) {//5 previous games
-            let match = document.createElement('div');
-            match.className = 'match';
+    let container = document.getElementById('historyContainer');
+    container.style.display = 'none';
+    removeElementsByClass('match');
+    let counter = 0;
+    for (let i = 0; i < matchHistory.length; i++) {//5 previous games (also, check if it is a legit game)
 
-            let matchId = matchHistory[i];//grab data
-            let response = fetchData(matchId, 'http://localhost:3000/matchInfo/by-matchid/');
-            let matchInfo = await (await response).json();
-            console.log(matchInfo);
 
+        let match = document.createElement('div');
+        match.className = 'match';
+        await sleep(1);
+        let matchId = matchHistory[i];//grab data
+        let response = fetchData(matchId, 'http://localhost:3000/matchInfo/by-matchid/');
+        let matchInfo = await (await response).json();
+        //console.log(matchInfo);
+        try {
+            if (matchInfo.status.status_code === 404) {//skips games that do not count as matchmade/are not saved.
+                continue;
+            }
+        } catch (err) {
+            if (counter === 5) //stop adding games once it has filled 5 games.
+                break;
+            //console.log(err);
             fillMatch(matchInfo, match);
             container.appendChild(match);
+            counter++;
         }
 
-        container.style.display = 'block';
-    } catch (err) {
-        console.log(err);
     }
+
+    container.style.display = 'block';
 
     _callback();
 }
@@ -153,11 +172,16 @@ async function fillMatch(matchInfo, match) {
         if (matchInfo.info.queueId === 450) {//show game type
             gameType.textContent = "ARAM";
         } else if (matchInfo.info.queueId === 400) {
-            gameType.textContent = "Normal"
+            gameType.textContent = "Normal";
+
         } else if (matchInfo.info.queueId === 420) {
             gameType.textContent = "Ranked";
+
         } else if (matchInfo.info.queueId === 1300) {
             gameType.textContent = "Nexus Blitz";
+            gameType.style.fontSize = "8px";
+        } else if (matchInfo.info.queueId === 850 || matchInfo.info.queueId === 830) {
+            gameType.textContent = "Coop vs AI";
             gameType.style.fontSize = "10px";
         }
 
@@ -165,10 +189,10 @@ async function fillMatch(matchInfo, match) {
         basicGameDisplay.appendChild(gameType);
 
         if (win === true) {
-            winStatus.textContent = "win";
+            winStatus.textContent = "Win";
             winStatus.style.color = "blue";
         } else if (win === false) {
-            winStatus.textContent = "loss";
+            winStatus.textContent = "Loss";
             winStatus.style.color = "red";
         }
 
@@ -180,7 +204,8 @@ async function fillMatch(matchInfo, match) {
 
         let championImage = document.createElement('img');//create champion image and fill it
         championImage.className = "match_image";
-        championImage.src = './dragontail-stats/img/champion/tiles/' + playerInfo.championName + '_0.jpg';//champ image from dragontail
+        //let imageSrc = fetch("http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/" + playerInfo.championName + "_0.jpg")
+        championImage.src = "http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/" + playerInfo.championName + "_0.jpg"//champ image from dragontail
         championPlayed.appendChild(championImage);
 
         let kdaDisplay = document.createElement('div');
@@ -196,20 +221,120 @@ async function fillMatch(matchInfo, match) {
     }
 }
 
+async function fillMastery(masteryList) {
+
+    try {
+
+        let response = await fetch('http://ddragon.leagueoflegends.com/cdn/11.11.1/data/en_US/champion.json');
+        let dDragon = await (await response).json();
+        console.log(dDragon);
+        console.log(masteryList);
+        let masteryDisplay = document.getElementById('masteryDisplay');
+        removeElementsByClass('champ_mastery');
+        for (let i = 0; i < 5; i++) {
+            let championMasteryDisplay = document.createElement('div');
+
+            championMasteryDisplay.className = 'champ_mastery';
+            let championData = masteryList[i];
+            await sleep(1);
+            fillChampMastery(championData, dDragon, championMasteryDisplay)
+            masteryDisplay.appendChild(championMasteryDisplay);
+
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function fillChampMastery(championData, dDragon, championMasteryDisplay) {
+    let championName;
+    let championId;
+
+    for (var key in dDragon.data) {
+        if (dDragon.data.hasOwnProperty(key)) {
+            if (championData.championId === parseInt(dDragon.data[key].key)) {
+                championId = dDragon.data[key].id;
+                championName = dDragon.data[key].name;
+            }
+        }
+    }
+    let championContainer = document.createElement('div');//champion container
+    championContainer.className = 'mastery_champ_container';
+
+    let champImg = document.createElement('img');//image of champion
+    champImg.className = 'mastery_champ_img';
+    champImg.src = "http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/" + championId + "_0.jpg";
+
+    let championNameDisplay = document.createElement('p');//name of champion
+    championNameDisplay.className = 'mastery_champ_name';
+    championNameDisplay.textContent = championName;
+
+    let masteryContainer = document.createElement('div');//Mastery container
+    masteryContainer.className = 'mastery_container';
+
+    let pointsContainer = document.createElement('div');
+    pointsContainer.className = 'points_container';
+    let pointsDisplay = document.createElement('p');
+    pointsDisplay.className = 'points_display';
+
+    let masteryEmblem;
+    if (championData.championLevel > 3) {
+        masteryEmblem = document.createElement('img');//mastery emblem
+        masteryEmblem.className = 'mastery_emblem';
+        masteryEmblem.src = "https://raw.communitydragon.org/10.1/game/assets/loadouts/summoneremotes/rewards/mastery/em_champ_mastery_0" + championData.championLevel + "_selector.png";
+    }
+
+    let masteryLevel = document.createElement('p');//mastery level in text
+    masteryLevel.className = 'mastery_level';
+    masteryLevel.textContent = 'Level: ' + championData.championLevel;//fill in the mastery level
+
+    championContainer.appendChild(championNameDisplay);//fill up the champion container
+    championContainer.appendChild(champImg);
+
+    masteryContainer.appendChild(masteryLevel);//show the image assuming mastery level is 4 or greater
+    if (championData.championLevel > 3) {
+        masteryContainer.appendChild(masteryEmblem);
+    }
+    pointsDisplay.textContent = "Points: " + championData.championPoints;
+    pointsContainer.appendChild(pointsDisplay);
+
+    championMasteryDisplay.appendChild(championContainer);//put everything into the mastery display
+    championMasteryDisplay.appendChild(masteryContainer);
+    championMasteryDisplay.appendChild(pointsContainer);
+    /*for (let i = 0; i < Object.keys(dDragon.data).length; i++) {
+        console.log("printing " + dDragon.data[i]);
+    }*/
+
+    /*for (let i = 0; i < dDragon.data.length; i++) {
+        console.log(dDragon.data[i]);
+    }*/
+
+}
+
 async function fillDisplayBody(summonerInfo, _callback) {
     fillProfile(summonerInfo);
-    //grab ranked stats and display
+    //GET ranked stats and display
     {
         summonerId = summonerInfo.id;
-        let response = fetchData(summonerId, 'http://localhost:3000/summonerRankedStats/by-id/');//grab ranked stats
+        let response = fetchData(summonerId, 'http://localhost:3000/summonerRankedStats/by-id/');//fetch ranked stats
         let rankedInfo = await (await response).json();
         fillRankedStats(rankedInfo);
     }
-    //grab match history and display
+    //GET mastery info and display
+    {
+        summonerId = summonerInfo.id;
+        let response = fetchData(summonerId, 'http://localhost:3000/mastery/by-id/');//fetch mastery of champions
+        let masteryList = await (await response).json();
+        //console.log(masteryList)
+        fillMastery(masteryList);
+    }
+
+    //GET match history and display
     {
         puuid = summonerInfo.puuid;
-        let response = fetchData(puuid, 'http://localhost:3000/summonerMatchHistory/by-puuid/');//grab previous five games
+        let response = fetchData(puuid, 'http://localhost:3000/summonerMatchHistory/by-puuid/');//fetch previous five games
         let matchHistory = await (await response).json();
+        console.log(matchHistory);
         fillMatchHistory(matchHistory, function () {
             _callback();
         });
@@ -259,4 +384,7 @@ function removeElementsByClass(className) {
     while (elements.length > 0) {
         elements[0].parentNode.removeChild(elements[0]);
     }
+}
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

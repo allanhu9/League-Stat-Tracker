@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 const fetch = require('node-fetch');
 const cors = require('cors');
 
@@ -49,7 +48,7 @@ app.get('/summonerInfo/by-name/:name', async (req, res) => {
 app.get('/summonerMatchHistory/by-puuid/:puuid', async (req, res) => {//Just call for five matches at a time so I dont have to make a new fetch function
     const { apiKey, apiMatchesByPuuid } = require(`./config`);
     let puuid = req.params.puuid;
-    let spec = puuid + '/ids?start=0&count=5&';//this is a really dumb solution to add in the start and count variables...
+    let spec = puuid + '/ids?start=0&count=20&';//this solution seems decent to add in the start and count variables...
     const data = await fetchData(spec, `${apiKey}`, `${apiMatchesByPuuid}`);
     res.send(data);
     //start=0&count=20
@@ -62,9 +61,16 @@ app.get('/matchInfo/by-matchid/:matchid', async (req, res) => {
     let spec = matchid + '?';
     const data = await fetchData(spec, `${apiKey}`, `${apiMatchDataByMatchId}`);
     res.send(data);
-
 })
 
-app.listen(port, () => {
-    console.log(`League Stat Tracker Backend listening at http://localhost:${port}`);
+app.get('/mastery/by-id/:id', async (req, res) => {
+    const { apiKey, apiMasteryById } = require(`./config`);
+    let id = req.params.id;
+    let spec = id + '?';
+    const data = await fetchData(spec, `${apiKey}`, `${apiMasteryById}`);
+    res.send(data);
+})
+
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`League Stat Tracker Backend listening at ${process.env.PORT}`);
 })
