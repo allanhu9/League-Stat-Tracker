@@ -17,16 +17,16 @@ This is the link, by the way: [Link Here](https://gchroma.github.io/League-Stat-
 
 ### Front-End - These files are actually being accessed by GitHub to host the webpage :
 
-index.html : The structure of the website frontpage, what you see on your screen.
-style.css : Gives the look of the website. It could be better, but it is what it is.
-script.js : The script fetches the data from the website backend and places it onto the page. It also makes the button and search bar work, hides things, and is basically all of the interactibility on the page.
-images folder : Consists only of the background image used in the website, everything else is taken from online APIs.
+1. index.html : The structure of the website frontpage, what you see on your screen.
+2. style.css : Gives the look of the website. It could be better, but it is what it is.
+3. script.js : The script fetches the data from the website backend and places it onto the page. It also makes the button and search bar work, hides things, and is basically all of the interactibility on the page.
+4. images folder : Consists only of the background image used in the website, everything else is taken from online APIs.
 
 ### Back-end - These are the files that are hosting using Heroku. They're only in this github repository for viewing purposes:
 
-index.js : This is the main file for the backend and is responsible for grabbing data from the RIOT API and sending it to the front end. (or technically anywhere else that issues a request...)
-config.js : Takes data from the .env file in a secure way.
-.env file : Holds sensitive information and other constants such as API key, port to host on, and more, it is not put in git because .gitignore helps by not uploading it to the repository.
+1. index.js : This is the main file for the backend and is responsible for grabbing data from the RIOT API and sending it to the front end. (or technically anywhere 2. else that issues a request...)
+3. config.js : Takes data from the .env file in a secure way.
+4. .env file : Holds sensitive information and other constants such as API key, port to host on, and more, it is not put in git because .gitignore helps by not uploading it to the repository.
 
 ## Some reflections
 
