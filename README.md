@@ -11,7 +11,7 @@ Of course, since I only have a development API key from Riot Games, I will need 
 
 If I happen to get a permanent personal API key, there will be another update.
 
-This is the link, by the way: [Link Here](https://gchroma.github.io/League-Stat-Tracker/)
+This is the link to the website, by the way: (https://gchroma.github.io/League-Stat-Tracker/)
 
 ## Brief description of what each file does
 
