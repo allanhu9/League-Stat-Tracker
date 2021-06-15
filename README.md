@@ -3,8 +3,51 @@ A stat tracking website for league of legends
 
 Gets data from the RIOT API and displays your stats on the website! In development.
 
-Assuming I don't have my page up and running online anywhere:
+## update - Webpage is online! Please read everything in this section
+
+The website is now hosted online through heroku and Github! Yay!
+
+Of course, since I only have a development API key from Riot Games, I will need to refresh the key every day or the website will not work. If you want to try the website, you can contact me by my email or phone number and I'll put the new key in.
+
+If I happen to get a permanent personal API key, there will be another update.
+
+This is the link, by the way: [Link Here](https://gchroma.github.io/League-Stat-Tracker/)
+
+## Brief description of what each file does
+
+### Front-End - These files are actually being accessed by GitHub to host the webpage :
+
+index.html : The structure of the website frontpage, what you see on your screen.
+style.css : Gives the look of the website. It could be better, but it is what it is.
+script.js : The script fetches the data from the website backend and places it onto the page. It also makes the button and search bar work, hides things, and is basically all of the interactibility on the page.
+images folder : Consists only of the background image used in the website, everything else is taken from online APIs.
+
+### Back-end - These are the files that are hosting using Heroku. They're only in this github repository for viewing purposes:
+
+index.js : This is the main file for the backend and is responsible for grabbing data from the RIOT API and sending it to the front end. (or technically anywhere else that issues a request...)
+config.js : Takes data from the .env file in a secure way.
+.env file : Holds sensitive information and other constants such as API key, port to host on, and more, it is not put in git because .gitignore helps by not uploading it to the repository.
+
+## Some reflections
+
+Html, css, and js suck. They are not the way to go.
+
+Using something like react.js would've been so much easier, and also I would've been able to make the website much better looking, and run faster. (Currently it's a slog.)
+
+I was originally planning on adding more things like MMR, but before I ran out of time to work on the website I figured it would be better to get it up live so it is easy to use.
+
+While there was some significant difficulty with getting data from Riot and working with the backend, the most difficult thing was learning the html and css to actually have the webpage have some level of presentability. Despite that though, there's some clipping, empty space, scalability is a nightmare (I should not have used height scaling) and it's generally pretty ugly.
+
+Maybe in the future i'll make a discord bot... at least that doesn't require anything other than displaying text.
+
+Anyway this is the form that i'll be leaving this webpage in for a while.
+
+BTW: Big thanks to someone named fl0rixn from the RIOT games Third Party developer discord channel, he was a great help.
+
+
 ## To run the website locally:
+
+If you want to run the project locally, for some reason, here are some instructions:
 
 This project uses something called express.js, a node.js framework, to host a local server so that it can fetch data from the RIOT api.
 Since this is obviously not optimized, there's a few things you'll need to do to be able to run it.
@@ -38,10 +81,10 @@ API_URL_MATCHES_BYPUUID=https://americas.api.riotgames.com/lol/match/v5/matches/
 API_URL_MATCHDATA_BYMATCHID=https://americas.api.riotgames.com/lol/match/v5/matches/
 ~~~
 
-You can set your own port to be whatever you want. As for the api-key, you can either get your own by going onto RIOT API, or if you know me personally, just email me. Hopefully my website will be approved to have a key by then.
+You can set your own port to be whatever you want. As for the api-key, you can either get your own by going onto RIOT API, or if you know me personally, just email me and I can tell you more. Hopefully my website will be approved to have a key by then.
 
 Now, all you have to do to run it is to type
 ~~~
 node index.js
 ~~~
-into the command line (that is still on the league-stat-tracker-main folder) and then run the index.html file. Yay.
+into the command line (that is still on the league-stat-tracker-main folder) and then run the index.html file. Woohoo.
