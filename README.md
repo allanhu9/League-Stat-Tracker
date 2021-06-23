@@ -13,6 +13,12 @@ If I happen to get a permanent personal API key, there will be another update.
 
 This is the link to the website, by the way: https://gchroma.github.io/League-Stat-Tracker/
 
+## update 2 - I actually got a permanent API key!
+
+Go ahead and click the link above and it'll work just fine! I'll make another update when I stop hosting this page.
+
+I added a crappy little fix to prevent spamming which just doesn't let you make a request until 5 seconds pass, cause I really don't want to work on this thing any longer to be honest.
+
 ## Brief description of what each file does
 
 ### Front-End - These files are actually being accessed by GitHub to host the webpage :
