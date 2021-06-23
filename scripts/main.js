@@ -51,7 +51,7 @@ async function fillProfile(summonerInfo) {
 
     profileLevel.textContent = summonerInfo.summonerLevel;
     profileName.textContent = summonerInfo.name;
-    profilePic.src = 'https://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
+    profilePic.src = 'http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
     //profilePic.src = './dragontail-stats/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
 }
 
@@ -136,7 +136,7 @@ async function fillMatch(matchInfo, match) {
     //metadata -> participants -> find puuid match index
     //participants -> index -> team
     //team id 100 = index 0, team id 200 = index 1 -> win (true/false) -> change background colour
-    //queueId 450 = ARAM, 420 = Ranked, 400 = Norms, 1300 = Nexus blitz... why, lol.
+    //queueId 450 = ARAM, 420 = Ranked, 400 = Norms, 1300 = Nexus blitz, 850 and 830 are bot games... why, lol.
     try {
         let playerIndex;
         for (let i = 0; i < 10; i++) {
@@ -225,7 +225,7 @@ async function fillMastery(masteryList) {
 
     try {
 
-        let response = await fetch('https://ddragon.leagueoflegends.com/cdn/11.11.1/data/en_US/champion.json');
+        let response = await fetch('http://ddragon.leagueoflegends.com/cdn/11.11.1/data/en_US/champion.json');
         let dDragon = await (await response).json();
         console.log(dDragon);
         console.log(masteryList);
@@ -263,7 +263,7 @@ async function fillChampMastery(championData, dDragon, championMasteryDisplay) {
 
     let champImg = document.createElement('img');//image of champion
     champImg.className = 'mastery_champ_img';
-    champImg.src = "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/" + championId + "_0.jpg";
+    champImg.src = "http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/" + championId + "_0.jpg";
 
     let championNameDisplay = document.createElement('p');//name of champion
     championNameDisplay.className = 'mastery_champ_name';
@@ -376,6 +376,9 @@ userNameButton.onclick = async function () {//when the search button is clicked
             displayBody.style.display = 'block';
         });
     }
+
+    //temporary fast implementation to stop spamming
+    sleep(5000);//Wait 5 seconds.
 
 }
 
