@@ -51,7 +51,7 @@ async function fillProfile(summonerInfo) {
 
     profileLevel.textContent = summonerInfo.summonerLevel;
     profileName.textContent = summonerInfo.name;
-    profilePic.src = 'http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
+    profilePic.src = 'https://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
     //profilePic.src = './dragontail-stats/11.10.1/img/profileicon/' + summonerInfo.profileIconId + '.png';
 }
 
@@ -225,7 +225,7 @@ async function fillMastery(masteryList) {
 
     try {
 
-        let response = await fetch('http://ddragon.leagueoflegends.com/cdn/11.11.1/data/en_US/champion.json');
+        let response = await fetch('https://ddragon.leagueoflegends.com/cdn/11.11.1/data/en_US/champion.json');
         let dDragon = await (await response).json();
         console.log(dDragon);
         console.log(masteryList);
