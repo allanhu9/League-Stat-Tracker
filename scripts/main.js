@@ -378,7 +378,8 @@ userNameButton.onclick = async function () {//when the search button is clicked
     }
 
     //temporary fast implementation to stop spamming
-    sleep(5000);//Wait 5 seconds.
+    //sleep(5000);//Wait 5 seconds.
+    //this is porbably actually not needed.
 
 }
 
