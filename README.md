@@ -19,6 +19,7 @@ Go ahead and click the link above and it'll work just fine! I'll make another up
 
 I added a crappy little fix to prevent spamming which just doesn't let you make a request until 5 seconds pass, cause I really don't want to work on this thing any longer to be honest.
 
+The match history may temporarily not work as the new key I recieved only has RIOT API's matchv4 which will soon deprecate (june 26), while I wrote my website's code for matchv5. Hopefully it'll work by june 26th.
 ## Brief description of what each file does
 
 ### Front-End - These files are actually being accessed by GitHub to host the webpage :
