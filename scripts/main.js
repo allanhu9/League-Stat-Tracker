@@ -263,7 +263,7 @@ async function fillChampMastery(championData, dDragon, championMasteryDisplay) {
 
     let champImg = document.createElement('img');//image of champion
     champImg.className = 'mastery_champ_img';
-    champImg.src = "http://ddragon.leagueoflegends.com/cdn/img/champion/tiles/" + championId + "_0.jpg";
+    champImg.src = "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/" + championId + "_0.jpg";
 
     let championNameDisplay = document.createElement('p');//name of champion
     championNameDisplay.className = 'mastery_champ_name';
