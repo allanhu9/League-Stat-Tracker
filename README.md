@@ -31,9 +31,9 @@ The match history may temporarily not work as the new key I recieved only has RI
 
 ### Back-end - These are the files that are hosting using Heroku. They're only in this github repository for viewing purposes:
 
-1. index.js : This is the main file for the backend and is responsible for grabbing data from the RIOT API and sending it to the front end. (or technically anywhere 2. else that issues a request...)
-3. config.js : Takes data from the .env file in a secure way.
-4. .env file : Holds sensitive information and other constants such as API key, port to host on, and more, it is not put in git because .gitignore helps by not uploading it to the repository.
+1. index.js : This is the main file for the backend and is responsible for grabbing data from the RIOT API and sending it to the front end. (or technically anywhere else that issues a request...)
+2. config.js : Takes data from the .env file in a secure way.
+3. .env file : Holds sensitive information and other constants such as API key, port to host on, and more, it is not put in git because .gitignore helps by not uploading it to the repository.
 
 ## Some reflections
 
