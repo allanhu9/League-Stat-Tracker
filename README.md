@@ -45,7 +45,7 @@ I was originally planning on adding more things like MMR, but before I ran out o
 
 While there was some significant difficulty with getting data from Riot and working with the backend, the most difficult thing was learning the html and css to actually have the webpage have some level of presentability. Despite that though, there's some clipping, empty space, scalability is a nightmare (I should not have used height scaling) and it's generally pretty ugly.
 
-Maybe in the future i'll make a discord bot... at least that doesn't require anything other than displaying text.
+Maybe in the future I'll make a discord bot... at least that doesn't require anything other than displaying text.
 
 Anyway this is the form that i'll be leaving this webpage in for a while.
 
@@ -76,7 +76,7 @@ npm install cors
 (once again to fetch data from API)
 ~~~
 
-Okay one more thing before you can run this code, the .env file. My .env file is hidden for safety reasons, but if you need to make your own, just create a .env file and copy paste what's below directly into the file.
+Okay, one more thing before you can run this code, the .env file. My .env file is hidden for safety reasons, but if you need to make your own, just create a .env file and copy paste what's below directly into the file.
 
 ~~~
 NODE_ENV=development
@@ -95,3 +95,6 @@ Now, all you have to do to run it is to type
 node index.js
 ~~~
 into the command line (that is still on the league-stat-tracker-main folder) and then run the index.html file. Woohoo.
+
+## update 3
+I am no longer hosting the website online, but feel free to follow the instructions above to check it out on your own computer.
