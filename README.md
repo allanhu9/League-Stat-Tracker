@@ -1,7 +1,7 @@
 # League-Stat-Tracker
 A stat tracking website for league of legends
 
-Gets data from the RIOT API and displays your stats on the website! In development.
+Gets data from the RIOT API and displays your stats on the website! Not in development anymore.
 
 ## update - Webpage is online! Please read everything in this section
 
